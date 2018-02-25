@@ -1,0 +1,5 @@
+Exception: Invalid Hex value,please try again in C:\xampp\htdocs\Car_maker\Data_Creation\Class_Car.php:22
+Stack trace:
+#0 C:\xampp\htdocs\Car_maker\Data_Creation\Class_Car.php(27): Car->valid_Color()
+#1 C:\xampp\htdocs\Car_maker\Forms\Create_Car.php(15): Car->save_Car()
+#2 {main}

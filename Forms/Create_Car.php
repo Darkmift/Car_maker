@@ -1,14 +1,23 @@
 <?php
+//globals caller must be first line!
+$GLOBALS['caller_page'] = basename(__FILE__, '.php');
 include '../HTML_Page_frame/header.php';
 include '../Data_Creation/Class_Car.php';
-$GLOBALS['caller_page'] = basename(__FILE__, '.php');
 ?>
 <?php
 if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
     $form_name = filter_var($_POST['car_name'], FILTER_SANITIZE_STRING);
     $form_color = filter_var($_POST['car_color'], FILTER_SANITIZE_STRING);
-    $BMW = new Car($form_name, $form_color);
-    $BMW->save_Car();
+
+//    $FormCar = new Car($form_name, $form_color);
+//    $FormCar->save_Car();
+    try {
+        $FormCar = new Car($form_name, $form_color);
+        $FormCar->save_Car();
+    } catch (Exception $e) {
+        file_put_contents('error.txt', $e . "\n");
+        echo "SHITSHIT";
+    }
 }
 ?>
 <div class="main">
